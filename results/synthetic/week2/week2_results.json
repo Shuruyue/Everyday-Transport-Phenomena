@@ -1,0 +1,176 @@
+{
+  "config": "config/synthetic/week2.toml",
+  "synthetic": true,
+  "stefan": {
+    "tube-A": {
+      "D_m2_s": 1.1833969615898077e-05,
+      "D_ci95_slope_only": 2.0114042695401045e-07,
+      "D_95pct_range_with_T": [
+        1.1138262853598685e-05,
+        1.2534138149199897e-05
+      ],
+      "D_at_25C_m2_s": 1.1833969615898077e-05,
+      "D_fuller_at_T": 1.234174955389369e-05,
+      "D_chapman_enskog_at_T": 1.1881540818162807e-05,
+      "intercept_m2": -1.8796594329923118e-06,
+      "intercept_ci95": 5.887843477332795e-06,
+      "r2": 0.9988979054109219,
+      "pseudo_steady_ratio_c_over_cL": 0.002397428625637316,
+      "diffusion_time_z0sq_over_D_s": 76.05224867156288,
+      "truth_D_at_25C": 1.18e-05
+    },
+    "tube-B": {
+      "D_m2_s": 1.2047401773854529e-05,
+      "D_ci95_slope_only": 2.481650419408472e-07,
+      "D_95pct_range_with_T": [
+        1.1356929564925389e-05,
+        1.2749573072741938e-05
+      ],
+      "D_at_25C_m2_s": 1.2047401773854529e-05,
+      "D_fuller_at_T": 1.234174955389369e-05,
+      "D_chapman_enskog_at_T": 1.1881540818162807e-05,
+      "intercept_m2": -8.828516659578699e-06,
+      "intercept_ci95": 7.264362244928124e-06,
+      "r2": 0.9983821019968806,
+      "pseudo_steady_ratio_c_over_cL": 0.002397428625637316,
+      "diffusion_time_z0sq_over_D_s": 168.08603531382911,
+      "truth_D_at_25C": 1.18e-05
+    }
+  },
+  "dish": {
+    "ethanol-still-1": {
+      "liquid": "ethanol",
+      "mode": "natural",
+      "m0_g": 15.7979,
+      "recess0_mm": 1.8375013996897749,
+      "rate_g_per_h": 3.702481318681317,
+      "rate_ci95_g_per_h": 0.16727716318112437,
+      "T_liquid_window_mean_C": 16.25857692307693,
+      "dew_point_C": 16.713498048480233,
+      "kc_eff_measured_m_s": 0.0018078358654511394,
+      "film_thickness_mm": 6.6526375500804775,
+      "kc_correlation_flush_m_s": 0.0023025551282901033,
+      "kc_diffusion_limit_m_s": 0.000340291002092409,
+      "kc_correlation_with_recess_m_s": 0.00170333649856678,
+      "surface_layer_stable": true,
+      "fit": {
+        "values": {
+          "multiplier": 1.2693602591930457,
+          "UA_bottom": 0.029840620617728568
+        },
+        "ci95": {
+          "multiplier": 0.006523847844363933,
+          "UA_bottom": 0.0005199064355974749
+        },
+        "stderr": {
+          "multiplier": 0.0032938312615628127,
+          "UA_bottom": 0.00026249601638672507
+        },
+        "corr": [
+          [
+            1.0000000000000002,
+            -0.9853862972570878
+          ],
+          [
+            -0.9853862972570879,
+            1.0
+          ]
+        ],
+        "residual_s": 1.1708529188674974,
+        "dof": 116
+      },
+      "truth_multiplier": 1.35,
+      "truth_UA_bottom": 0.03,
+      "t_98pct_model_h": 4.889123217272668,
+      "t_98pct_measured_h": null,
+      "wet_bulb_fitted_C": 14.334303567191512,
+      "water_uptake_max_g": 1.8153378176912045,
+      "t_98pct_with_water_uptake_h": 11.081899224040804,
+      "t_98pct_95pct_range_h": [
+        4.760004016924027,
+        5.0405447401994
+      ]
+    },
+    "ethanol-fan-low-1": {
+      "liquid": "ethanol",
+      "mode": "forced",
+      "m0_g": 15.8076,
+      "recess0_mm": 1.8355596076526683,
+      "rate_g_per_h": 6.267042857142849,
+      "rate_ci95_g_per_h": 0.8472097810331009,
+      "T_liquid_window_mean_C": 14.93681428571432,
+      "dew_point_C": 16.713498048480233,
+      "kc_eff_measured_m_s": 0.003322631568873341,
+      "film_thickness_mm": 3.605446280349141,
+      "kc_correlation_flush_m_s": 0.009328599364843312,
+      "kc_diffusion_limit_m_s": 0.00033895248406784625,
+      "kc_correlation_with_recess_m_s": 0.0038399302313040433,
+      "surface_layer_stable": true,
+      "fit": {
+        "values": {
+          "multiplier": 1.0950772420080408,
+          "UA_bottom": 0.029514042151293714
+        },
+        "ci95": {
+          "multiplier": 0.015031760287592056,
+          "UA_bottom": 0.0007068892485185523
+        },
+        "stderr": {
+          "multiplier": 0.007540524210714968,
+          "UA_bottom": 0.000354603545477515
+        },
+        "corr": [
+          [
+            1.0000000000000002,
+            -0.9788195569860418
+          ],
+          [
+            -0.9788195569860418,
+            1.0
+          ]
+        ],
+        "residual_s": 1.3073036275140562,
+        "dof": 72
+      },
+      "truth_multiplier": 1.25,
+      "truth_UA_bottom": 0.03,
+      "t_98pct_model_h": 3.418444669771113,
+      "t_98pct_measured_h": null,
+      "wet_bulb_fitted_C": 11.54504858487951,
+      "water_uptake_max_g": 2.1297267110817772,
+      "t_98pct_with_water_uptake_h": 7.77263701369887,
+      "t_98pct_95pct_range_h": [
+        3.333205225817734,
+        3.52826670067047
+      ]
+    },
+    "aqueous-75-fan-low-1": {
+      "liquid": "aqueous",
+      "mode": "forced",
+      "m0_g": 17.408299999999997,
+      "recess0_mm": 1.752877637032395,
+      "rate_g_per_h": 4.788299999999993,
+      "rate_ci95_g_per_h": 0.5569585720943584,
+      "T_liquid_window_mean_C": 18.89824285714286,
+      "dew_point_C": 16.713498048480233,
+      "multiplier_from": "ethanol-fan-low-1",
+      "multiplier": 1.0950772420080408,
+      "rms_mass_error_g": 0.011086093635548893,
+      "residual_liquid_after_8h_g": 4.005834553688301,
+      "x_E_after_8h": 6.548655075219669e-06
+    }
+  },
+  "analogy_week1_to_week2": {
+    "ethanol-fan-low-1": {
+      "fan_label": "fan-low",
+      "U_eff_week1_m_s": 1.9763680800933805,
+      "kc_predicted_from_week1_m_s": 0.01036788964727007,
+      "kc_predicted_range_m_s": [
+        0.010313620171008668,
+        0.010422147851344413
+      ],
+      "kc_week2_fitted_m_s": 0.010215536864250575,
+      "measured_over_predicted": 0.9853053236287472
+    }
+  }
+}

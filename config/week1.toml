@@ -1,0 +1,71 @@
+# Week 1 - Heat transfer in everyday life (rod heated in boiling water, then cooled)
+#
+# Replace every "MEASURE" with your reading, then run
+#     python scripts/week1_analysis.py config/week1.toml
+# Loading refuses to run while any "MEASURE" is left. Units are in the key names.
+# Add or delete [[rods]], [[heating]] and [[cooling]] blocks to match what you did.
+
+[meta]
+synthetic = false
+output_dir = "results/week1"
+
+[environment]
+T_inf_C = "MEASURE"     # room air temperature, average over the session
+T_sur_C = "MEASURE"     # walls/ceiling for radiation; same as T_inf_C unless you know better
+P_kPa = 101.3           # local pressure
+
+[analysis]
+n_cells = 60                       # finite-volume cells along the exposed rod
+savgol_window = 11                 # points; instantaneous-h derivative (report it)
+savgol_polyorder = 3
+forced_correlation = "churchill_bernstein"   # or "hilpert"
+monte_carlo_n = 300
+seed = 20260106
+
+[[rods]]
+name = "stainless"
+material = "AISI_304"        # AISI_304 | AISI_430 (magnet sticks) | aluminum_pure | aluminum_6061_T6 | copper_pure
+section = "circle"           # "circle" -> diameter_mm ; "rectangle" -> width_mm, thickness_mm
+diameter_mm = "MEASURE"      # caliper, average of 3 positions
+total_length_cm = "MEASURE"
+mass_g = "MEASURE"           # checks the material: measured density / handbook density is reported
+emissivity = "MEASURE"       # ~0.95 under black tape, 0.1-0.4 for bare steel
+emissivity_range = ["MEASURE", "MEASURE"]   # low, high for the uncertainty analysis
+k_uncertainty_rel = 0.10     # handbook k vs your actual alloy
+
+[[rods]]
+name = "aluminum"
+material = "aluminum_6061_T6"
+section = "circle"
+diameter_mm = "MEASURE"
+total_length_cm = "MEASURE"
+mass_g = "MEASURE"
+emissivity = "MEASURE"
+emissivity_range = ["MEASURE", "MEASURE"]
+k_uncertainty_rel = 0.15     # alloy unknown: 6061 (167) vs pure (237) W/m K
+
+# ---- heating in boiling water (Part A). CSV columns: t_s, T_base_C, T1_C ... Tn_C
+[[heating]]
+name = "stainless-heating-1"
+rod = "stainless"
+csv = "data/raw/w1_heating_stainless_1.csv"
+exposed_length_cm = "MEASURE"                # water surface to tip
+sensor_positions_cm = "MEASURE"              # above the water surface, e.g. [1, 2, 4, 7, 12] for T1..T5
+steady_window_s = ["MEASURE", "MEASURE"]     # readings averaged as the steady profile
+
+# ---- cooling in air (Part B). CSV columns: t_s, T_C
+[[cooling]]
+name = "stainless-natural-1"
+rod = "stainless"
+csv = "data/raw/w1_cooling_stainless_natural_1.csv"
+mode = "natural"
+fit_start_s = "MEASURE"      # skip the first seconds (wiping off the water film)
+
+[[cooling]]
+name = "stainless-fan-low-1"
+rod = "stainless"
+csv = "data/raw/w1_cooling_stainless_fan-low_1.csv"
+mode = "forced"
+fan_label = "fan-low"        # same label in the Week 2 config links the two assignments
+fit_start_s = "MEASURE"
+# U_measured_m_s = 1.5       # uncomment if you have an anemometer reading

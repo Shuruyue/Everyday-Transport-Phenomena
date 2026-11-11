@@ -1,0 +1,6 @@
+# Exact versions every result in this repository was produced and tested with.
+# Install: pip install -r requirements-lock.txt && pip install -e . --no-deps
+numpy==2.5.3
+scipy==1.18.1
+matplotlib==3.11.2
+pytest==9.2.0

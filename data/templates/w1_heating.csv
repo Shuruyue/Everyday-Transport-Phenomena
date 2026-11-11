@@ -1,0 +1,4 @@
+# Week 1 heating run. t_s: seconds from the moment the rod enters the boiling water.
+# T_base_C: water temperature at the rod (thermometer in the pot). T1_C..Tn_C: sensors at
+# the heights listed in sensor_positions_cm of the config, same order. Add columns if needed.
+t_s,T_base_C,T1_C,T2_C,T3_C,T4_C,T5_C

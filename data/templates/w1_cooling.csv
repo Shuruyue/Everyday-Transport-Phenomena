@@ -1,0 +1,3 @@
+# Week 1 cooling run. t_s: seconds from lifting the rod out of the water; T_C: rod temperature.
+# Keep a constant sampling interval (video read-out) so the instantaneous-h derivative works.
+t_s,T_C

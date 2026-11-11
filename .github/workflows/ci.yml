@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install (pinned versions)
+        run: |
+          pip install -r requirements-lock.txt
+          pip install -e . --no-deps
+      - name: Unit and verification tests
+        run: pytest -q
+      - name: Verification figures
+        run: python scripts/verify.py
+      - name: End-to-end pipeline on synthetic data
+        run: |
+          python scripts/make_synthetic_data.py
+          python scripts/week1_analysis.py config/synthetic/week1.toml
+          python scripts/week2_analysis.py config/synthetic/week2.toml

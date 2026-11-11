@@ -1,0 +1,3 @@
+# Week 2 open dish. t_min: minutes since pouring; mass_g: dish + liquid (tare in the config);
+# T_liquid_C: thermocouple 1-2 mm below the liquid surface.
+t_min,mass_g,T_liquid_C

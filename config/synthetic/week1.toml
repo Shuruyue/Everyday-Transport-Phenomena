@@ -1,0 +1,100 @@
+# Synthetic Week 1 run: same structure as config/week1.toml, filled with the
+# planned set-up. scripts/make_synthetic_data.py generates the CSVs from [truth];
+# the analysis never reads [truth] except to print "recovered vs truth".
+# Figures made from this config carry a SYNTHETIC watermark.
+
+[meta]
+synthetic = true
+output_dir = "results/synthetic/week1"
+
+[environment]
+T_inf_C = 25.0
+T_sur_C = 25.0
+P_kPa = 101.3
+
+[analysis]
+n_cells = 60
+savgol_window = 11
+savgol_polyorder = 3
+forced_correlation = "churchill_bernstein"
+monte_carlo_n = 300
+seed = 20260106
+
+[truth]
+seed = 7
+noise_K = 0.15
+C_h_natural = 1.20       # true free-convection h / Churchill-Chu
+C_h_forced = 1.15        # true forced h / Churchill-Bernstein
+fan_U_m_s = { "fan-low" = 1.5, "fan-high" = 3.0 }
+k_factor = { "stainless" = 1.0, "aluminum" = 0.92 }    # true k / handbook k
+T_base_C = 99.3
+T_start_cooling_C = 96.0
+
+[[rods]]
+name = "stainless"
+material = "AISI_304"
+section = "circle"
+diameter_mm = 4.0
+total_length_cm = 22.0
+mass_g = 21.8
+emissivity = 0.95
+emissivity_range = [0.85, 0.98]
+k_uncertainty_rel = 0.10
+
+[[rods]]
+name = "aluminum"
+material = "aluminum_6061_T6"
+section = "circle"
+diameter_mm = 4.0
+total_length_cm = 22.0
+mass_g = 7.45
+emissivity = 0.95
+emissivity_range = [0.85, 0.98]
+k_uncertainty_rel = 0.15
+
+[[heating]]
+name = "stainless-heating-1"
+rod = "stainless"
+csv = "data/synthetic/w1_heating_stainless_1.csv"
+exposed_length_cm = 15.0
+sensor_positions_cm = [1.0, 2.0, 4.0, 7.0, 12.0]
+steady_window_s = [1200.0, 1500.0]
+
+[[heating]]
+name = "aluminum-heating-1"
+rod = "aluminum"
+csv = "data/synthetic/w1_heating_aluminum_1.csv"
+exposed_length_cm = 15.0
+sensor_positions_cm = [1.0, 2.0, 4.0, 7.0, 12.0]
+steady_window_s = [1200.0, 1500.0]
+
+[[cooling]]
+name = "stainless-natural-1"
+rod = "stainless"
+csv = "data/synthetic/w1_cooling_stainless_natural_1.csv"
+mode = "natural"
+fit_start_s = 10.0
+
+[[cooling]]
+name = "stainless-fan-low-1"
+rod = "stainless"
+csv = "data/synthetic/w1_cooling_stainless_fan-low_1.csv"
+mode = "forced"
+fan_label = "fan-low"
+fit_start_s = 10.0
+U_measured_m_s = 1.6
+
+[[cooling]]
+name = "stainless-fan-high-1"
+rod = "stainless"
+csv = "data/synthetic/w1_cooling_stainless_fan-high_1.csv"
+mode = "forced"
+fan_label = "fan-high"
+fit_start_s = 10.0
+
+[[cooling]]
+name = "aluminum-natural-1"
+rod = "aluminum"
+csv = "data/synthetic/w1_cooling_aluminum_natural_1.csv"
+mode = "natural"
+fit_start_s = 10.0

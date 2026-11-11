@@ -1,0 +1,73 @@
+# Week 2 - Mass transfer in everyday life (evaporation of ethanol)
+#
+# Replace every "MEASURE", then run
+#     python scripts/week2_analysis.py config/week2.toml
+# Units are in the key names.
+
+[meta]
+synthetic = false
+output_dir = "results/week2"
+
+[environment]
+T_inf_C = "MEASURE"
+T_sur_C = "MEASURE"
+P_kPa = 101.3
+RH_pct = "MEASURE"
+
+[diffusivity]
+source = "fuller"            # or "measured" (your Stefan-tube value) with:
+# D_ethanol_m2_s = 1.2e-5
+# T_ref_C = 25.0
+
+[analysis]
+recess_model = "stagnant_layer"   # "none" | "stagnant_layer" (upper bound on the recess effect)
+sigma_mass_g = 0.01               # scale resolution, weights the fit
+sigma_T_K = 0.2                   # thermometer noise, weights the fit
+monte_carlo_n = 200
+seed = 20260113
+week1_results = "results/week1/week1_results.json"   # for the heat-mass analogy check
+
+# ---- Stefan tubes. CSV columns: t_h, mass_g   (or t_h, z_mm if you read the level)
+[[stefan]]
+name = "tube-A"
+csv = "data/raw/w2_stefan_A.csv"
+reading = "mass"             # "mass" or "level"
+inner_diameter_mm = "MEASURE"
+z0_mm = "MEASURE"            # initial liquid level below the tube mouth
+
+[dish]
+inner_diameter_mm = "MEASURE"
+rim_height_mm = "MEASURE"    # inside depth of the dish
+tare_g = "MEASURE"           # empty dish
+dish_mass_g = "MEASURE"      # glass that cools with the liquid (usually = tare_g)
+dish_cp_J_per_kgK = 840.0    # soda-lime glass
+eps_liquid = 0.95            # ethanol/water surfaces are nearly black in the thermal IR
+UA_bottom_W_per_K = 0.05     # starting guess; fitted when T_liquid_C is recorded
+
+# ---- open-dish runs. CSV columns: t_min, mass_g, T_liquid_C
+[[dish_runs]]
+name = "ethanol-still-1"
+csv = "data/raw/w2_dish_still_1.csv"
+liquid = "ethanol"           # "ethanol" (95-99.5 %) or "aqueous"
+mode = "natural"
+rate_window_min = ["MEASURE", "MEASURE"]   # early, nearly straight part of m(t)
+
+[[dish_runs]]
+name = "ethanol-fan-low-1"
+csv = "data/raw/w2_dish_fan-low_1.csv"
+liquid = "ethanol"
+mode = "forced"
+fan_label = "fan-low"
+U_m_s = "MEASURE"            # anemometer, or the Week 1 U_eff for this fan setting
+rate_window_min = ["MEASURE", "MEASURE"]
+
+[[dish_runs]]
+name = "aqueous-75-fan-low-1"
+csv = "data/raw/w2_dish_aqueous75_fan-low_1.csv"
+liquid = "aqueous"
+ethanol_mass_fraction = "MEASURE"   # 75 vol% is about 0.68 by mass; check a density table
+mode = "forced"
+fan_label = "fan-low"
+U_m_s = "MEASURE"
+multiplier_from = "ethanol-fan-low-1"   # predict this run with the k_c fitted on pure ethanol
+rate_window_min = ["MEASURE", "MEASURE"]
