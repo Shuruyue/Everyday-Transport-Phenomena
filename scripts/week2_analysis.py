@@ -19,7 +19,7 @@ import numpy as np
 from etp import build
 from etp.constants import R, c_to_k
 from etp.diffusivity import d_chapman_enskog, d_fuller, scale_diffusivity
-from etp.io import check_time_increasing, load_config, read_table
+from etp.io import check_time_increasing, load_config, read_table, utf8_console
 from etp.mass import evaporation as ev
 from etp.mass import stefan
 from etp.mass.activity import ETHANOL_WATER_NRTL, Ideal
@@ -343,4 +343,5 @@ def write_summary(r, path):
 
 
 if __name__ == "__main__":
+    utf8_console()
     main()

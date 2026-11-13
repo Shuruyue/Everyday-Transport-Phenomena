@@ -94,7 +94,8 @@ python scripts/week2_analysis.py config/synthetic/week2.toml
    Week 1 fan speed for the analogy check).
 4. Figures, `*_results.json` and `summary.md` appear in `results/week1/` and `results/week2/`.
 
-A Traditional Chinese walk-through is in [`docs/guide_zh-TW.md`](docs/guide_zh-TW.md).
+A step-by-step walk-through, including which result feeds which slide, is in
+[`docs/lab_guide.md`](docs/lab_guide.md).
 
 ## Repository layout
 
@@ -110,7 +111,7 @@ src/etp/
 scripts/   verify.py, design_estimates.py, make_synthetic_data.py, week1_analysis.py, week2_analysis.py
 config/    week1.toml, week2.toml (to fill in), synthetic/ (pipeline test)
 data/      templates/, raw/ (your measurements), synthetic/
-docs/      derivations.md, design_estimates.md, guide_zh-TW.md
+docs/      derivations.md, design_estimates.md, lab_guide.md
 tests/     47 tests: exact solutions, convergence orders, conservation, parameter recovery
 ```
 

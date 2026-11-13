@@ -21,7 +21,7 @@ from etp.correlations import h_forced_cylinder, h_free_horizontal_cylinder, h_ra
 from etp.heat import fin, inverse
 from etp.heat.fin_fv import Rod, SurfaceLoss
 from etp.heat.lumped import biot, instantaneous_h
-from etp.io import check_time_increasing, load_config, read_table
+from etp.io import check_time_increasing, load_config, read_table, utf8_console
 from etp.plotting import COLORS, save
 
 CP_REL_UNC = 0.03  # handbook specific heat vs the actual alloy
@@ -297,4 +297,5 @@ def write_summary(r, path):
 
 
 if __name__ == "__main__":
+    utf8_console()
     main()

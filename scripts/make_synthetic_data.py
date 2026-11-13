@@ -18,7 +18,7 @@ from etp.constants import c_to_k
 from etp.correlations import h_forced_cylinder, h_free_horizontal_cylinder
 from etp.heat.fin_fv import Rod, SurfaceLoss
 from etp.heat.lumped import cool_lumped
-from etp.io import load_config, write_table
+from etp.io import load_config, utf8_console, write_table
 from etp.mass import evaporation as ev
 from etp.mass import stefan
 from etp.mass.activity import ETHANOL_WATER_NRTL, Ideal
@@ -120,6 +120,7 @@ def week2(cfg):
 
 
 if __name__ == "__main__":
+    utf8_console()
     week1(load_config("config/synthetic/week1.toml"))
     week2(load_config("config/synthetic/week2.toml"))
     print("synthetic CSVs written to data/synthetic/")

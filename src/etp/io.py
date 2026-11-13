@@ -9,12 +9,22 @@ placeholder.
 from __future__ import annotations
 
 import csv
+import sys
 import tomllib
 from pathlib import Path
 
 import numpy as np
 
 PLACEHOLDER = "MEASURE"
+
+
+def utf8_console():
+    """Print in UTF-8. When output is redirected to a file or pipe, Windows uses the locale
+    encoding (cp950 on a Traditional-Chinese system), which cannot encode characters such as
+    ° and ², so a script would crash on its first table."""
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
 
 
 def _find_placeholders(obj, path=""):
@@ -35,7 +45,7 @@ def load_config(path):
     missing = list(_find_placeholders(cfg))
     if missing:
         raise ValueError(f"{path}: fill in the measured values first:\n  " + "\n  ".join(missing))
-    cfg["_path"] = str(path)
+    cfg["_path"] = path.as_posix()  # same text on every OS, so results files do not differ
     return cfg
 
 

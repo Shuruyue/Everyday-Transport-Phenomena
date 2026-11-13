@@ -18,6 +18,7 @@ from etp.constants import ATM, R, c_to_k
 from etp.diffusivity import d_fuller
 from etp.heat import fin
 from etp.heat.fin_fv import Rod, SurfaceLoss, uniform_section
+from etp.io import utf8_console
 from etp.mass import evaporation as ev
 from etp.mass import stefan
 from etp.mass.activity import Ideal
@@ -25,6 +26,7 @@ from etp.mass.diffusion2d import series_resistance_estimate, solve_dish
 from etp.plotting import COLORS, save
 from etp.properties import ETHANOL, MATERIALS
 
+utf8_console()
 OUT = Path("figures/verification")
 summary = {}
 

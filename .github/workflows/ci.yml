@@ -24,8 +24,10 @@ jobs:
           pip install -e . --no-deps
       - name: Unit and verification tests
         run: pytest -q
-      - name: Verification figures
-        run: python scripts/verify.py
+      - name: Verification figures and design estimates
+        run: |
+          python scripts/verify.py
+          python scripts/design_estimates.py
       - name: End-to-end pipeline on synthetic data
         run: |
           python scripts/make_synthetic_data.py
