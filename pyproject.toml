@@ -20,4 +20,11 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-filterwarnings = ["error"]
+filterwarnings = [
+    "error",
+    # SciPy's BDF allocates its difference array with np.empty; on the first step it subtracts a
+    # row that is still uninitialized memory and warns when the leftover bits are inf/NaN. The row
+    # is overwritten before it is ever read, so results are unaffected, but the warning appears
+    # at random and made the transient-fit test flaky. Only this warning, only from bdf, is ignored.
+    "ignore:invalid value encountered in subtract:RuntimeWarning:scipy.integrate._ivp.bdf",
+]
