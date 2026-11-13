@@ -1,7 +1,7 @@
 import pytest
 
-from etp import diffusivity as di
-from etp.constants import ATM
+from transport_phenomena_experiments import diffusivity as di
+from transport_phenomena_experiments.constants import ATM
 
 
 def test_fuller_ethanol_air_25C():

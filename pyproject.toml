@@ -3,7 +3,7 @@ requires = ["setuptools>=69"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "etp"
+name = "transport-phenomena-experiments"
 version = "0.1.0"
 description = "Heat and mass transfer in everyday life: models, inverse analysis and verification for two Transport Phenomena II self-study experiments"
 readme = "README.md"

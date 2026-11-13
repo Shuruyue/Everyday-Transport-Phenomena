@@ -1,6 +1,6 @@
-# Everyday-Transport-Phenomena
+# Transport-Phenomena-Experiments
 
-[![CI](https://github.com/Shuruyue/Everyday-Transport-Phenomena/actions/workflows/ci.yml/badge.svg)](https://github.com/Shuruyue/Everyday-Transport-Phenomena/actions/workflows/ci.yml)
+[![CI](https://github.com/Shuruyue/Transport-Phenomena-Experiments/actions/workflows/ci.yml/badge.svg)](https://github.com/Shuruyue/Transport-Phenomena-Experiments/actions/workflows/ci.yml)
 ![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 
@@ -74,8 +74,8 @@ the report has to say so.
 ## Quick start
 
 ```bash
-git clone https://github.com/Shuruyue/Everyday-Transport-Phenomena.git
-cd Everyday-Transport-Phenomena
+git clone https://github.com/Shuruyue/Transport-Phenomena-Experiments.git
+cd Transport-Phenomena-Experiments
 pip install -r requirements-lock.txt && pip install -e . --no-deps
 pytest -q                                   # 47 tests, ~10 s
 python scripts/verify.py                    # verification figures
@@ -100,7 +100,7 @@ A step-by-step walk-through, including which result feeds which slide, is in
 ## Repository layout
 
 ```
-src/etp/
+src/transport_phenomena_experiments/
   properties.py, correlations.py, diffusivity.py   air/ethanol/water/metal data, h and k_c correlations, D_AB
   heat/fin.py, heat/fin_fv.py                       analytical fin solutions, 1D finite-volume rod
   heat/lumped.py, heat/inverse.py                   lumped cooling, fits (m; h and k; C_h; U_eff)

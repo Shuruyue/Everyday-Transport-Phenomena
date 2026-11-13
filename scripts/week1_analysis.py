@@ -15,14 +15,18 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 
-from etp import build
-from etp.constants import c_to_k
-from etp.correlations import h_forced_cylinder, h_free_horizontal_cylinder, h_radiation
-from etp.heat import fin, inverse
-from etp.heat.fin_fv import Rod, SurfaceLoss
-from etp.heat.lumped import biot, instantaneous_h
-from etp.io import check_time_increasing, load_config, read_table, utf8_console
-from etp.plotting import COLORS, save
+from transport_phenomena_experiments import build
+from transport_phenomena_experiments.constants import c_to_k
+from transport_phenomena_experiments.correlations import (
+    h_forced_cylinder,
+    h_free_horizontal_cylinder,
+    h_radiation,
+)
+from transport_phenomena_experiments.heat import fin, inverse
+from transport_phenomena_experiments.heat.fin_fv import Rod, SurfaceLoss
+from transport_phenomena_experiments.heat.lumped import biot, instantaneous_h
+from transport_phenomena_experiments.io import check_time_increasing, load_config, read_table, utf8_console
+from transport_phenomena_experiments.plotting import COLORS, save
 
 CP_REL_UNC = 0.03  # handbook specific heat vs the actual alloy
 D_ABS_UNC_MM = 0.05  # caliper reading

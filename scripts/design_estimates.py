@@ -13,15 +13,19 @@ from pathlib import Path
 
 import numpy as np
 
-from etp.constants import ATM, R, c_to_k
-from etp.correlations import h_forced_cylinder, h_free_horizontal_cylinder, h_radiation
-from etp.diffusivity import d_chapman_enskog, d_fuller
-from etp.heat import fin
-from etp.io import utf8_console
-from etp.mass import evaporation as ev
-from etp.mass import stefan
-from etp.mass.activity import Ideal
-from etp.properties import ETHANOL, MATERIALS, dew_point
+from transport_phenomena_experiments.constants import ATM, R, c_to_k
+from transport_phenomena_experiments.correlations import (
+    h_forced_cylinder,
+    h_free_horizontal_cylinder,
+    h_radiation,
+)
+from transport_phenomena_experiments.diffusivity import d_chapman_enskog, d_fuller
+from transport_phenomena_experiments.heat import fin
+from transport_phenomena_experiments.io import utf8_console
+from transport_phenomena_experiments.mass import evaporation as ev
+from transport_phenomena_experiments.mass import stefan
+from transport_phenomena_experiments.mass.activity import Ideal
+from transport_phenomena_experiments.properties import ETHANOL, MATERIALS, dew_point
 
 utf8_console()
 T_INF = c_to_k(25.0)

@@ -1,10 +1,10 @@
 import numpy as np
 import pytest
 
-from etp.constants import ATM, R
-from etp.diffusivity import d_fuller
-from etp.mass import stefan
-from etp.properties import ETHANOL
+from transport_phenomena_experiments.constants import ATM, R
+from transport_phenomena_experiments.diffusivity import d_fuller
+from transport_phenomena_experiments.mass import stefan
+from transport_phenomena_experiments.properties import ETHANOL
 
 T = 298.15
 D = float(d_fuller("ethanol", "air", T, ATM))

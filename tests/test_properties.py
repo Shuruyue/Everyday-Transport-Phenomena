@@ -1,8 +1,8 @@
 import numpy as np
 import pytest
 
-from etp import properties as pr
-from etp.constants import ATM, c_to_k
+from transport_phenomena_experiments import properties as pr
+from transport_phenomena_experiments.constants import ATM, c_to_k
 
 
 def test_air_prandtl_matches_table():

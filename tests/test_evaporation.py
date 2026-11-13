@@ -2,12 +2,12 @@ import numpy as np
 import pytest
 from scipy import optimize
 
-from etp.constants import ATM, R, c_to_k
-from etp.diffusivity import d_fuller
-from etp.mass import evaporation as ev
-from etp.mass.activity import ETHANOL_WATER_NRTL, Ideal
-from etp.mass.stefan import log_factor
-from etp.properties import ETHANOL, WATER
+from transport_phenomena_experiments.constants import ATM, R, c_to_k
+from transport_phenomena_experiments.diffusivity import d_fuller
+from transport_phenomena_experiments.mass import evaporation as ev
+from transport_phenomena_experiments.mass.activity import ETHANOL_WATER_NRTL, Ideal
+from transport_phenomena_experiments.mass.stefan import log_factor
+from transport_phenomena_experiments.properties import ETHANOL, WATER
 
 AMB_DRY = ev.Ambient(c_to_k(25.0), c_to_k(25.0), ATM, 0.0)
 AMB_HUMID = ev.Ambient(c_to_k(25.0), c_to_k(25.0), ATM, 0.7)

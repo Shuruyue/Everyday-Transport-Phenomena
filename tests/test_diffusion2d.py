@@ -1,6 +1,6 @@
 import numpy as np
 
-from etp.mass.diffusion2d import series_resistance_estimate, solve_dish
+from transport_phenomena_experiments.mass.diffusion2d import series_resistance_estimate, solve_dish
 
 
 def test_flush_disk_converges_to_weber_solution():

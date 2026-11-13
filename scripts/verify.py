@@ -14,17 +14,17 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 
-from etp.constants import ATM, R, c_to_k
-from etp.diffusivity import d_fuller
-from etp.heat import fin
-from etp.heat.fin_fv import Rod, SurfaceLoss, uniform_section
-from etp.io import utf8_console
-from etp.mass import evaporation as ev
-from etp.mass import stefan
-from etp.mass.activity import Ideal
-from etp.mass.diffusion2d import series_resistance_estimate, solve_dish
-from etp.plotting import COLORS, save
-from etp.properties import ETHANOL, MATERIALS
+from transport_phenomena_experiments.constants import ATM, R, c_to_k
+from transport_phenomena_experiments.diffusivity import d_fuller
+from transport_phenomena_experiments.heat import fin
+from transport_phenomena_experiments.heat.fin_fv import Rod, SurfaceLoss, uniform_section
+from transport_phenomena_experiments.io import utf8_console
+from transport_phenomena_experiments.mass import evaporation as ev
+from transport_phenomena_experiments.mass import stefan
+from transport_phenomena_experiments.mass.activity import Ideal
+from transport_phenomena_experiments.mass.diffusion2d import series_resistance_estimate, solve_dish
+from transport_phenomena_experiments.plotting import COLORS, save
+from transport_phenomena_experiments.properties import ETHANOL, MATERIALS
 
 utf8_console()
 OUT = Path("figures/verification")

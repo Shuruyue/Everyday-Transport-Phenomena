@@ -3,9 +3,9 @@
 import numpy as np
 import pytest
 
-from etp.heat import fin
-from etp.heat.fin_fv import Rod, SurfaceLoss, uniform_section
-from etp.properties import MATERIALS
+from transport_phenomena_experiments.heat import fin
+from transport_phenomena_experiments.heat.fin_fv import Rod, SurfaceLoss, uniform_section
+from transport_phenomena_experiments.properties import MATERIALS
 
 MAT = MATERIALS["AISI_304"]
 D, L, H = 4e-3, 0.15, 15.0
@@ -78,7 +78,7 @@ def test_transient_approaches_steady_state():
 
 
 def test_energy_conservation_with_nonlinear_loss():
-    from etp.correlations import h_free_horizontal_cylinder
+    from transport_phenomena_experiments.correlations import h_free_horizontal_cylinder
 
     loss = SurfaceLoss(lambda T: h_free_horizontal_cylinder(D, T, T_INF, 101325.0), T_INF,
                        0.3, T_INF)

@@ -2,8 +2,8 @@ import numpy as np
 import pytest
 from scipy import integrate
 
-from etp.heat import lumped
-from etp.heat.fin_fv import SurfaceLoss
+from transport_phenomena_experiments.heat import lumped
+from transport_phenomena_experiments.heat.fin_fv import SurfaceLoss
 
 C, A, H, T_I, T_INF = 2.0, 2e-3, 20.0, 373.15, 298.15
 

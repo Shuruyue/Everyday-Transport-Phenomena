@@ -16,16 +16,16 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 
-from etp import build
-from etp.constants import R, c_to_k
-from etp.diffusivity import d_chapman_enskog, d_fuller, scale_diffusivity
-from etp.io import check_time_increasing, load_config, read_table, utf8_console
-from etp.mass import evaporation as ev
-from etp.mass import stefan
-from etp.mass.activity import ETHANOL_WATER_NRTL, Ideal
-from etp.mass.inverse import fit_evaporation, mass_rate
-from etp.plotting import COLORS, save
-from etp.properties import ETHANOL, M_AIR, WATER, dew_point
+from transport_phenomena_experiments import build
+from transport_phenomena_experiments.constants import R, c_to_k
+from transport_phenomena_experiments.diffusivity import d_chapman_enskog, d_fuller, scale_diffusivity
+from transport_phenomena_experiments.io import check_time_increasing, load_config, read_table, utf8_console
+from transport_phenomena_experiments.mass import evaporation as ev
+from transport_phenomena_experiments.mass import stefan
+from transport_phenomena_experiments.mass.activity import ETHANOL_WATER_NRTL, Ideal
+from transport_phenomena_experiments.mass.inverse import fit_evaporation, mass_rate
+from transport_phenomena_experiments.plotting import COLORS, save
+from transport_phenomena_experiments.properties import ETHANOL, M_AIR, WATER, dew_point
 
 T_UNC_K = 0.5  # room-temperature uncertainty used in the Monte Carlo
 

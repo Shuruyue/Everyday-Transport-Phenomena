@@ -1,8 +1,8 @@
 import numpy as np
 import pytest
 
-from etp import correlations as co
-from etp.constants import ATM, SIGMA
+from transport_phenomena_experiments import correlations as co
+from transport_phenomena_experiments.constants import ATM, SIGMA
 
 
 def test_radiation_coefficient_is_exact_linearization():

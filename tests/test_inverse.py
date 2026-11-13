@@ -7,16 +7,16 @@ on measurements either.
 import numpy as np
 import pytest
 
-from etp.constants import ATM, c_to_k
-from etp.correlations import h_forced_cylinder, h_free_horizontal_cylinder
-from etp.diffusivity import d_fuller
-from etp.heat import fin, inverse
-from etp.heat.fin_fv import Rod, SurfaceLoss, uniform_section
-from etp.heat.lumped import cool_lumped
-from etp.mass import evaporation as ev
-from etp.mass.activity import Ideal
-from etp.mass.inverse import fit_evaporation, mass_rate
-from etp.properties import ETHANOL, MATERIALS
+from transport_phenomena_experiments.constants import ATM, c_to_k
+from transport_phenomena_experiments.correlations import h_forced_cylinder, h_free_horizontal_cylinder
+from transport_phenomena_experiments.diffusivity import d_fuller
+from transport_phenomena_experiments.heat import fin, inverse
+from transport_phenomena_experiments.heat.fin_fv import Rod, SurfaceLoss, uniform_section
+from transport_phenomena_experiments.heat.lumped import cool_lumped
+from transport_phenomena_experiments.mass import evaporation as ev
+from transport_phenomena_experiments.mass.activity import Ideal
+from transport_phenomena_experiments.mass.inverse import fit_evaporation, mass_rate
+from transport_phenomena_experiments.properties import ETHANOL, MATERIALS
 
 MAT = MATERIALS["AISI_304"]
 D, L = 4e-3, 0.15
