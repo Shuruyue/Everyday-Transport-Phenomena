@@ -6,18 +6,18 @@ Everything the code assumes, in the order the report needs it. Symbols are SI.
 
 Energy balance on a slice $dx$ of a rod with cross-section $A_c$, perimeter $P$:
 
-$$
+```math
 \rho c A_c \frac{\partial T}{\partial t} = \frac{\partial}{\partial x}\left(k A_c \frac{\partial T}{\partial x}\right) - P\,q''(T),
 \qquad q''(T) = h_c(T)(T-T_\infty) + \varepsilon\sigma(T^4 - T_{sur}^4).
-$$
+```
 
 With constant $h$ and $\theta = T - T_\infty$ the steady problem is $\theta'' = m^2\theta$, $m^2 = hP/(kA_c)$.
 Base $\theta(0) = \theta_b$; an adiabatic tip at the corrected length $L_c = L + A_c/P$ gives
 
-$$
+```math
 \frac{\theta}{\theta_b} = \frac{\cosh m(L_c - x)}{\cosh mL_c},\qquad
 q_b = \sqrt{hPkA_c}\,\theta_b \tanh mL_c .
-$$
+```
 
 **What a steady profile can and cannot tell you.** The steady solution depends on $h$ and $k$ only
 through $m$. A steady profile therefore fixes $h/k = m^2 A_c/P$, and $h$ follows only after a
@@ -27,14 +27,14 @@ handbook $k$ is assumed. The transient adds the diffusivity $\alpha = k/\rho c$:
 Write $\theta = \theta_{ss}(x) - \phi(x,t)$. Then $\phi_t = \alpha(\phi_{xx} - m^2\phi)$ with
 $\phi(0,t)=0$, $\phi_x(L,t)=0$, $\phi(x,0)=\theta_{ss}$. Separation gives eigenfunctions
 $\sin\lambda_n x$ with $\cos\lambda_n L = 0$, i.e. $\lambda_n = (2n-1)\pi/2L$, and decay rates
-$\alpha(\lambda_n^2 + m^2)$. The coefficients are $B_n = \frac{2}{L}\int_0^L \theta_{ss}\sin\lambda_n x\,dx$.
+$\alpha(\lambda_n^2 + m^2)$. The coefficients are $`B_n = \frac{2}{L}\int_0^L \theta_{ss}\sin\lambda_n x\,dx`$.
 Integrating by parts twice, using $\theta_{ss}'' = m^2\theta_{ss}$, $\cos\lambda_n L = 0$ and $\theta_{ss}'(L)=0$:
 
-$$
+```math
 \int_0^L \cosh m(L-x)\sin\lambda_n x\,dx = \frac{\lambda_n\cosh mL}{\lambda_n^2+m^2}
 \quad\Rightarrow\quad
 \frac{\theta}{\theta_b} = \frac{\cosh m(L-x)}{\cosh mL} - \sum_{n\ge1}\frac{2\lambda_n}{L(\lambda_n^2+m^2)}\sin(\lambda_n x)\,e^{-\alpha(\lambda_n^2+m^2)t}.
-$$
+```
 
 The slowest mode sets the time to steady state, $\tau_1 = 1/[\alpha(m^2 + (\pi/2L)^2)]$. Because the
 time scale carries $\alpha$ and the shape carries $m$, fitting the whole transient separates $h$ and $k$
@@ -43,14 +43,14 @@ solutions with observed order 2.0 (`figures/verification/fin_solver.png`).
 
 ## 2. Cooling in air (lumped capacitance)
 
-For $Bi = h(V/A_s)/k < 0.1$ (here $10^{-3}$ to $10^{-2}$): $C\,dT/dt = -A_s q''(T)$, $C = mc$.
+For $Bi = h(V/A_s)/k < 0.1$ (here $10^{-3}$ to $10^{-2}$): $`C\,dT/dt = -A_s q''(T)`$, $C = mc$.
 With constant $h$: $\theta/\theta_i = e^{-t/\tau}$, $\tau = C/(hA_s)$. Free convection
 ($h\propto\Delta T^{1/4}$) and radiation ($\propto T^3$) bend $\ln\theta$ vs $t$, so the code also fits the
 nonlinear ODE and reports the instantaneous coefficient
 
-$$
+```math
 h(t) = -\frac{C}{A_s}\,\frac{dT/dt}{T - T_\infty},
-$$
+```
 
 with $dT/dt$ from a Savitzky-Golay filter (window and order are reported with the result).
 
@@ -62,12 +62,12 @@ correlation-plus-analogy chain is tested end to end.
 
 ## 3. Stefan tube
 
-Vapour A diffuses through stagnant air B ($N_B = 0$): $N_A = y_A N_A - cD\,dy_A/dz$, so
-$N_A = \frac{cD}{z}\ln\frac{1-y_\infty}{1-y_s}$ (Stefan's law). The liquid recedes as $c_L\,dz/dt = N_A$:
+Vapour A diffuses through stagnant air B ($N_B = 0$): $`N_A = y_A N_A - cD\,dy_A/dz`$, so
+$N_A = \frac{cD}{z}\ln\frac{1-y_\infty}{1-y_s}$ (Stefan's law). The liquid recedes as $`c_L\,dz/dt = N_A`$:
 
-$$
+```math
 z^2 - z_0^2 = K t,\qquad K = 2\frac{c}{c_L}D_{AB}\ln\frac{1-y_\infty}{1-y_s}.
-$$
+```
 
 **Is pseudo-steady justified?** `stefan.moving_boundary` solves the full problem. In the interface frame
 $\zeta = (\text{height above liquid})/Z(t)$. For an isothermal, isobaric ideal gas $c$ is constant, so total
@@ -75,14 +75,14 @@ continuity makes the molar flux $N = N_A + N_B$ uniform in height. At the interf
 $u = \dot Z$, liquid lost $c_L u$ must supply both the outgoing flux and the vapour that fills the new gas
 volume, while air flows down into that volume:
 
-$$
+```math
 c_L u = N_{A,s} + c\,y_s u,\qquad 0 = N_{B,s} + c(1-y_s)u
 \;\Rightarrow\; N = (c_L - c)u,\quad u = -\frac{cD\,y_\zeta(0)}{Z\,c_L(1-y_s)}.
-$$
+```
 
 The species equation in $\zeta$ becomes $y_t = \frac{D}{Z^2}y_{\zeta\zeta} - \left[\frac{N}{cZ} + (1-\zeta)\frac{u}{Z}\right]y_\zeta$.
 With an initially vapour-free column, the full solution differs from the pseudo-steady law only by a
-nearly constant offset of about $(c/c_L)z_0 y_s/3 \approx 2\ \mu$m: the column stores vapour worth
+nearly constant offset of about $(c/c_L)z_0 y_s/3 \approx 2\ \mu\mathrm{m}$: the column stores vapour worth
 $y_s/2$ on average, minus the permeation time-lag deficit worth $y_s/6$. That is far below any level
 reading, and the slope $K$ agrees to 0.2 % (`figures/verification/stefan_tube.png`).
 
@@ -90,9 +90,9 @@ reading, and the slope $K$ agrees to 0.2 % (`figures/verification/stefan_tube.pn
 
 The code defines $k_c$ through
 
-$$
+```math
 N_A = k_c\,c_f\,(y_s - y_\infty)\,\phi,\qquad \phi = \frac{\ln[(1-y_\infty)/(1-y_s)]}{y_s - y_\infty},
-$$
+```
 
 so $N_A = k_c c_f\ln[(1-y_\infty)/(1-y_s)]$, which is Stefan's law with $k_c = D/\delta$ (film thickness
 $\delta$). The measured $k_c$ uses the **measured liquid temperature** in $y_s = P_{sat}(T_s)/P$.
@@ -100,9 +100,9 @@ $\delta$). The measured $k_c$ uses the **measured liquid temperature** in $y_s =
 **Correlations.** Forced flow: $Sh_L = 0.664Re_L^{1/2}Sc^{1/3}$ (course flat-plate form, $L$ = dish
 diameter). Still air: free convection driven by the gas density difference
 
-$$
+```math
 Ra_L = \frac{g\,|\rho_s - \rho_\infty|}{\bar\rho}\frac{L^3}{\nu D_{AB}},\qquad L = A/P = R/2 .
-$$
+```
 
 Ethanol vapour ($M = 46$) is heavier than air and the surface is cold, so $\rho_s > \rho_\infty$: a
 **stable** layer, $Sh = 0.52Ra^{1/5}$ (Incropera Eq. 9.32), not the familiar $0.54Ra^{1/4}$ for an
@@ -117,10 +117,10 @@ $Sh\propto Sc^{1/3}$, $n = 4/5$ for $Sh\propto Ra^{1/5}$ (since $Ra\propto1/D$),
 
 Surface energy balance (liquid plus dish, well mixed):
 
-$$
+```math
 \Big(\sum_i n_iM_ic_{p,i} + C_{dish}\Big)\frac{dT_s}{dt} = (hA + UA_b)(T_\infty - T_s)
 + \varepsilon\sigma A(T_{sur}^4 - T_s^4) - A\sum_i N_i\,\Delta H_{vap,i}(T_s).
-$$
+```
 
 $h$ comes from Chilton-Colburn, $j_H = j_D \Rightarrow h = k_c\rho c_p Le^{2/3}$, $Le = \alpha/D_{AB} = 1.8$.
 Setting $dT_s/dt = 0$ gives the psychrometric wet-bulb temperature of ethanol. Without radiation and
